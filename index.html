@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio Espacial - Ideia Space</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        :root {
+            --color-primary: #E6007E; /* Rosa/Magenta */
+            --color-dark: #0A043C;    /* Azul-Marinho Escuro */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Configuração de cores personalizadas para Tailwind */
+        .bg-primary { background-color: var(--color-primary); }
+        .bg-dark { background-color: var(--color-dark); }
+        .text-primary { color: var(--color-primary); }
+        .text-dark { color: var(--color-dark); }
+        .border-primary { border-color: var(--color-primary); }
+
+        /* Comportamento de rolagem suave */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Estilo personalizado para a lista de verificação (Entregáveis) */
+        .checklist li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--color-primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* Efeitos de hover personalizados */
+        .hover-scale {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(230, 0, 126, 0.15);
+        }
+        
+        .hover-glow:hover {
+            box-shadow: 0 0 15px rgba(230, 0, 126, 0.5);
+        }
+        
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+        
+        .image-container img {
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        
+        .image-container:hover img {
+            transform: scale(1.05);
+        }
+        
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(10, 4, 60, 0.8), transparent);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .image-container:hover .image-overlay {
+            transform: translateY(0);
+        }
+        
+        /* Animação para os números */
+        @keyframes countUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .count-animation {
+            animation: countUp 1s ease-out;
+        }
+    </style>
+</head>
+<body class="text-gray-700">
+
+    <header class="bg-white border-b border-gray-200 py-4 sticky top-0 z-50">
+        <div class="container mx-auto px-5 flex flex-wrap justify-between items-center">
+            <a href="#hero" class="flex items-center">
+                <img src="imagens/Sem título-1_Prancheta 1 (4).png" alt="Ideia Space" class="h-10 md:h-12">
+            </a>
+            
+            <button id="menu-btn" class="md:hidden p-2 rounded hover:bg-gray-100">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+
+            <nav id="nav-menu" class="w-full md:w-auto hidden md:flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 mt-4 md:mt-0">
+                <a href="#desafio" class="font-semibold text-gray-600 hover:text-primary transition-colors">O Desafio</a>
+                <a href="#metodologia" class="font-semibold text-gray-600 hover:text-primary transition-colors">Metodologia</a>
+                <a href="#satelite" class="font-semibold text-gray-600 hover:text-primary transition-colors">O Satélite</a>
+                <a href="#impacto" class="font-semibold text-gray-600 hover:text-primary transition-colors">Impacto</a>
+                <a href="#sobre" class="font-semibold text-gray-600 hover:text-primary transition-colors">Sobre Nós</a>
+                <a href="#footer" class="w-full md:w-auto text-center px-5 py-2 bg-primary text-white font-semibold rounded-lg shadow-md hover:opacity-90 hover-glow transition-all">
+                    Leve para sua instituição
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="hero" class="bg-dark text-white py-32 md:py-48">
+            <div class="container mx-auto px-5 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">O Desafio Espacial: Da Sala de Aula à Órbita</h1>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-gray-300">
+                    O Desafio Espacial é um projeto da Ideia Space que conecta o universo à sala de aula. Transformamos alunos em protagonistas, levando-os desde a concepção de uma missão até o lançamento de um satélite real.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#desafio" class="px-6 py-3 bg-primary text-white font-semibold rounded-lg shadow-lg hover:opacity-90 hover-glow transition-all">
+                        Saiba Mais
+                    </a>
+                    <a href="#impacto" class="px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-dark transition-colors">
+                        Veja nosso impacto
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="problema" class="py-20">
+            <div class="container mx-auto px-5 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-6">Por que um Desafio Espacial?</h2>
+                <p class="text-lg max-w-4xl mx-auto mb-4">
+                    A educação brasileira apresenta baixo desempenho em áreas de STEM (Ciência, Tecnologia, Engenharia e Matemática). Ao mesmo tempo, o setor espacial está em expansão e enfrenta uma ausência de profissionais qualificados.
+                </p>
+                <p class="text-lg max-w-4xl mx-auto">
+                    Acreditamos que o fascínio pelo espaço pode ser a fagulha para uma experiência de aprendizado engajadora. Usamos a missão espacial como uma ferramenta para capacitar estudantes para a economia do futuro.
+                </p>
+            </div>
+        </section>
+
+        <section id="desafio" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-5">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-6 text-center">O que é o Desafio Espacial?</h2>
+                <p class="text-lg text-center max-w-4xl mx-auto mb-12">
+                    Trata-se de uma competição de projetos de Missão Espacial voltada para alunos do Ensino Médio (14 a 18 anos). O projeto é desenhado para um ano e impacta diferentes grupos de alunos em etapas progressivas:
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center hover-scale">
+                        <h3 class="text-5xl font-bold text-primary mb-3 count-animation">500</h3>
+                        <p class="text-xl font-semibold text-dark">Alunos Iniciais</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center hover-scale">
+                        <h3 class="text-5xl font-bold text-primary mb-3 count-animation">30</h3>
+                        <p class="text-xl font-semibold text-dark">Alunos Selecionados</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center hover-scale">
+                        <h3 class="text-5xl font-bold text-primary mb-3 count-animation">1 Ano</h3>
+                        <p class="text-xl font-semibold text-dark">Duração Total do Projeto</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="metodologia" class="py-20">
+            <div class="container mx-auto px-5">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-6 text-center">Nossa Metodologia: Aprendendo na Prática</h2>
+                <p class="text-lg text-center max-w-4xl mx-auto mb-12">
+                    Nossa filosofia é fundamentada na Aprendizagem Baseada em Projetos (ABP) e no conceito "Hands On". O Desafio Espacial é estruturado em um caminho pedagógico de 5 passos:
+                </p>
+
+                <div class="max-w-3xl mx-auto">
+                    <ol class="relative border-l border-gray-200">
+                        <li class="mb-10 ml-6">
+                            <span class="absolute flex items-center justify-center w-8 h-8 bg-primary rounded-full -left-4 text-white font-bold hover-glow">1</span>
+                            <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-primary hover-scale">
+                                <h4 class="text-xl font-bold text-dark mb-1">Conceituar</h4>
+                                <p>Os alunos definem o escopo e os objetivos da missão. Eles respondem: "Qual problema minha missão irá resolver?".</p>
+                            </div>
+                        </li>
+                        <li class="mb-10 ml-6">
+                            <span class="absolute flex items-center justify-center w-8 h-8 bg-primary rounded-full -left-4 text-white font-bold hover-glow">2</span>
+                            <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-primary hover-scale">
+                                <h4 class="text-xl font-bold text-dark mb-1">Projetar</h4>
+                                <p>As equipes detalham como será a missão espacial e quais recursos serão necessários.</p>
+                            </div>
+                        </li>
+                        <li class="mb-10 ml-6">
+                            <span class="absolute flex items-center justify-center w-8 h-8 bg-primary rounded-full -left-4 text-white font-bold hover-glow">3</span>
+                            <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-primary hover-scale">
+                                <h4 class="text-xl font-bold text-dark mb-1">Construir</h4>
+                                <p>Os alunos exploram o kit de desenvolvimento de satélites (SMT) e tiram a missão do papel.</p>
+                            </div>
+                        </li>
+                        <li class="mb-10 ml-6">
+                            <span class="absolute flex items-center justify-center w-8 h-8 bg-primary rounded-full -left-4 text-white font-bold hover-glow">4</span>
+                            <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-primary hover-scale">
+                                <h4 class="text-xl font-bold text-dark mb-1">Lançar</h4>
+                                <p>Os alunos selecionados constroem o satélite orbital, realizam testes e o preparam para o lançamento.</p>
+                            </div>
+                        </li>
+                        <li class="ml-6">
+                            <span class="absolute flex items-center justify-center w-8 h-8 bg-primary rounded-full -left-4 text-white font-bold hover-glow">5</span>
+                            <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-primary hover-scale">
+                                <h4 class="text-xl font-bold text-dark mb-1">Aplicar</h4>
+                                <p>Com o satélite em órbita, os alunos utilizam seus dados para resolver o problema apontado na concepção da missão.</p>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
+                    <div class="bg-white p-8 rounded-lg shadow-lg hover-scale">
+                        <h3 class="text-2xl font-bold text-primary mb-4 border-b pb-2">Hard Skills</h3>
+                        <ul class="list-disc list-inside space-y-2 text-lg">
+                            <li>Metodologia Científica</li>
+                            <li>Programação e Robótica</li>
+                            <li>Análise de Dados</li>
+                            <li>Gestão de Projeto</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg hover-scale">
+                        <h3 class="text-2xl font-bold text-primary mb-4 border-b pb-2">Soft Skills</h3>
+                        <ul class="list-disc list-inside space-y-2 text-lg">
+                            <li>Criatividade</li>
+                            <li>Comunicação</li>
+                            <li>Tomada de Decisão</li>
+                            <li>Trabalho em Equipe</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="fases" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-5">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-12 text-center">Uma Jornada de 12 Meses</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-dark hover-scale">
+                        <h3 class="text-2xl font-bold text-primary mb-3">Pré-Desafio</h3>
+                        <span class="block font-bold text-dark mb-2">Meses 1-4</span>
+                        <p>Organização do projeto, definição de regras, seleção de escolas e formação de professores.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-dark hover-scale">
+                        <h3 class="text-2xl font-bold text-primary mb-3">Fase 1: Concepção</h3>
+                        <span class="block font-bold text-dark mb-2">Meses 4-7</span>
+                        <p>Início do curso para os 500 alunos. Foco na análise de problemas e concepção da missão espacial (MCR).</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-dark hover-scale">
+                        <h3 class="text-2xl font-bold text-primary mb-3">Fase 2: Projeto</h3>
+                        <span class="block font-bold text-dark mb-2">Meses 7-10</span>
+                        <p>Alunos recebem os Kits SMT. Apresentação final dos projetos (PDR) e seleção das melhores equipes.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-dark hover-scale">
+                        <h3 class="text-2xl font-bold text-primary mb-3">Fase 3: Construção</h3>
+                        <span class="block font-bold text-dark mb-2">Meses 10-15</span>
+                        <p>Os 30 alunos selecionados constroem o satélite PocketQube. Testes, entrega e inserção em órbita.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-dark hover-scale">
+                        <h3 class="text-2xl font-bold text-primary mb-3">Pós-Desafio</h3>
+                        <span class="block font-bold text-dark mb-2">Meses 15-18</span>
+                        <p>Com o satélite em órbita, o Ideia Space coleta os dados e os compartilha com as instituições.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="satelite" class="py-20">
+            <div class="container mx-auto px-5">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-12 text-center">Tecnologia Real para Aprendizado Real</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-lg shadow-lg hover-scale">
+                        <h3 class="text-2xl font-bold text-primary mb-4">1. Kit de Satélite (Treinamento - SMT)</h3>
+                        <p class="mb-4">Distribuído aos alunos na Fase 2 para prototipagem da missão. Inclui subsistemas reais:</p>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>O.B.D.H. (Computador de Bordo)</li>
+                            <li>T.T&C (Comunicação)</li>
+                            <li>ADCS (Sistema de Orientação)</li>
+                            <li>EPS (Sistema de Energia)</li>
+                            <li>Payload (Carga Útil)</li>
+                            <li>Sensores (Umidade, Temperatura, Pressão, etc.)</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg hover-scale">
+                        <h3 class="text-2xl font-bold text-primary mb-4">2. O Satélite Orbital (PocketQube)</h3>
+                        <p class="mb-4">Construído pelos 30 finalistas e lançado ao espaço. Especificações:</p>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><b>Modelo:</b> PocketQube 1P</li>
+                            <li><b>Dimensões:</b> 50x58x64 mm</li>
+                            <li><b>Massa:</b> 193 g</li>
+                            <li><b>Órbita:</b> LEO (Órbita Baixa)</li>
+                            <li><b>Lançamento:</b> Parceria com Falcon 9, PSLV, H3.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-12 max-w-2xl mx-auto">
+                    <div class="image-container">
+                        <img src="imagens/Space_Challenge_01_10_25.png" alt="Satélite PocketQube" class="w-full">
+                        <div class="image-overlay">
+                            <h3 class="text-xl font-bold">Satélite PocketQube</h3>
+                            <p>Modelo orbital construído pelos estudantes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="entregaveis" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-5">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-12 text-center">Ecossistema de Aprendizagem Completo</h2>
+                <ul class="checklist max-w-2xl mx-auto bg-white p-10 rounded-lg shadow-lg space-y-4 hover-scale">
+                    <li class="relative pl-8 text-lg">16 horas de Treinamento para Mentores e Professores</li>
+                    <li class="relative pl-8 text-lg">40 Planos de Aula e Guias do Professor</li>
+                    <li class="relative pl-8 text-lg">550 acessos à Plataforma de Conteúdos</li>
+                    <li class="relative pl-8 text-lg">110 Kits de Satélite de Treinamento (SMT)</li>
+                    <li class="relative pl-8 text-lg">1 Kit de Construção de Satélite Orbital (PocketQube)</li>
+                    <li class="relative pl-8 text-lg">1 Lançamento de um satélite PocketQube</li>
+                    <li class="relative pl-8 text-lg">40 horas de suporte online para Professores</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="impacto" class="py-20">
+            <div class="container mx-auto px-5">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-12 text-center">Nosso Impacto Comprovado</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-center hover-scale">
+                        <h3 class="text-4xl font-bold text-primary mb-2 count-animation">+1.000</h3>
+                        <p class="text-lg font-semibold text-dark">Alunos Capacitados</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-center hover-scale">
+                        <h3 class="text-4xl font-bold text-primary mb-2 count-animation">8</h3>
+                        <p class="text-lg font-semibold text-dark">Satélites Desenvolvidos</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-center hover-scale">
+                        <h3 class="text-4xl font-bold text-primary mb-2 count-animation">+140</h3>
+                        <p class="text-lg font-semibold text-dark">Professores Habilitados</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-center hover-scale">
+                        <h3 class="text-4xl font-bold text-primary mb-2 count-animation">5+</h3>
+                        <p class="text-lg font-semibold text-dark">Países Impactados</p>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-12 text-center">O que dizem nossos alunos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-lg shadow-lg hover-scale">
+                        <div class="flex items-center mb-4">
+                            <div class="image-container w-16 h-16 rounded-full overflow-hidden mr-4">
+                                <img src="imagens/Mariana.png" alt="Mariana Taveira" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <cite class="font-bold text-dark not-italic">Mariana Taveira</cite>
+                                <span class="block text-gray-600">Aprovada na Caltech</span>
+                            </div>
+                        </div>
+                        <blockquote class="text-lg italic border-l-4 border-primary pl-6 mb-4">
+                            "Participei do curso de satélites para alunos do Ensino Médio... Com a ajuda de engenheiros, projetamos nossa missão espacial, objetivando resolver problemas reais com nanossatélites."
+                        </blockquote>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg hover-scale">
+                        <div class="flex items-center mb-4">
+                            <div class="image-container w-16 h-16 rounded-full overflow-hidden mr-4">
+                                <img src="imagens/Roseno.png" alt="Roseno Gonçalves" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <cite class="font-bold text-dark not-italic">Roseno Gonçalves</cite>
+                                <span class="block text-gray-600">Aprovado na UFRJ</span>
+                            </div>
+                        </div>
+                        <blockquote class="text-lg italic border-l-4 border-primary pl-6 mb-4">
+                            "Tive a oportunidade de participar de um curso do Ideia Space... Conseguimos trabalhar com Arduino e ESP como plataformas de prototipagem para sensores... Foi muito divertido e esclarecedor."
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-5">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-6 text-center">Conheça a Liderança da Ideia Space</h2>
+                <p class="text-lg text-center max-w-4xl mx-auto mb-12">
+                    Somos um parceiro dedicado na formação da futura força de trabalho para o setor espacial. Fundada em 2022 por especialistas com experiência na Agência Espacial Brasileira e +25 anos de experiência combinada.
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-center hover-scale">
+                        <div class="image-container w-32 h-32 rounded-full overflow-hidden mx-auto mb-4">
+                            <img src="imagens/Leo.png" alt="Leonardo Souza" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="text-xl font-bold text-dark mb-1">Leonardo Souza</h4>
+                        <span class="text-primary font-semibold">CEO</span>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-center hover-scale">
+                        <div class="image-container w-32 h-32 rounded-full overflow-hidden mx-auto mb-4">
+                            <img src="imagens/six.png" alt="Matheus Six" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="text-xl font-bold text-dark mb-1">Matheus Six</h4>
+                        <span class="text-primary font-semibold">CPO (Produto)</span>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-center hover-scale">
+                        <div class="image-container w-32 h-32 rounded-full overflow-hidden mx-auto mb-4">
+                            <img src="imagens/rafa.png" alt="Rafael Lôbo" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="text-xl font-bold text-dark mb-1">Rafael Lôbo</h4>
+                        <span class="text-primary font-semibold">CTO (Tecnologia)</span>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg text-center hover-scale">
+                        <div class="image-container w-32 h-32 rounded-full overflow-hidden mx-auto mb-4">
+                            <img src="imagens/vitor.png" alt="Victor Baptista" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="text-xl font-bold text-dark mb-1">Victor Baptista</h4>
+                        <span class="text-primary font-semibold">COO (Operações)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="footer" class="bg-dark text-white py-20">
+    <div class="container mx-auto px-5 text-center">
+        <a href="#hero" class="flex justify-center mb-4">
+            <img src="imagens/PERFIL - IDEIA SPACE_Prancheta 1.png" alt="Ideia Space" class="h-10 md:h-12">
+        </a>
+        <h2 class="text-3xl font-bold mb-8">Vamos revolucionar a educação com essa Ideia?</h2>
+        
+        <a href="https://wa.me/5561991983152?text=Olá,%20vim%20do%20seu%20site!" 
+           target="_blank" 
+           class="px-8 py-3 bg-primary text-white text-lg font-semibold rounded-lg shadow-lg hover:opacity-90 hover-glow transition-all inline-block mb-4">
+            Entre em contato via WhatsApp
+        </a>
+
+        <div class="mt-12 text-gray-300">
+            <a href="tel:+5561991983152" class="block mb-2 hover:text-primary transition-colors">+55 (61) 99198 3152</a>
+            <a href="https://wa.me/5561991983152?text=Olá,%20vim%20do%20seu%20site!" 
+               target="_blank" 
+               class="hover:text-primary transition-colors">
+                Fale no WhatsApp
+            </a>
+        </div>
+        
+        <p class="text-gray-400 text-sm mt-8">
+            Ideia Space Educacao Espacial LTDA - CNPJ: 45.343.061/0001-90
+        </p>
+    </div>
+</footer>
+
+    <script>
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            document.getElementById('nav-menu').classList.toggle('hidden');
+        });
+        
+        // Adiciona animação aos números quando eles entram na viewport
+        const observerOptions = {
+            threshold: 0.5
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('count-animation');
+                }
+            });
+        }, observerOptions);
+        
+        // Observa todos os elementos com números
+        document.querySelectorAll('.count-animation').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
