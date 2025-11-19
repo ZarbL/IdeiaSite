@@ -1,0 +1,201 @@
+{
+  "header": {
+    "nav": {
+      "desafio": "The Challenge",
+      "metodologia": "Methodology",
+      "satelite": "The Satellite",
+      "impacto": "Impact",
+      "sobre": "About Us",
+      "cta": "Bring it to your institution"
+    }
+  },
+  "hero": {
+    "title": "The Space Challenge: From Classroom to Orbit",
+    "description": "The Space Challenge is an Ideia Space project that connects the universe to the classroom. We transform students into protagonists, taking them from mission conception to the launch of a real satellite.",
+    "btnPrimary": "Learn More",
+    "btnSecondary": "See our impact"
+  },
+  "problema": {
+    "title": "Why a Space Challenge?",
+    "text1": "Brazilian education shows low performance in STEM areas (Science, Technology, Engineering and Mathematics). At the same time, the space sector is expanding and faces a shortage of qualified professionals.",
+    "text2": "We believe that the fascination with space can be the spark for an engaging learning experience. We use the space mission as a tool to empower students for the economy of the future."
+  },
+  "desafio": {
+    "title": "What is the Space Challenge?",
+    "description": "This is a Space Mission project competition aimed at high school students (14 to 18 years old). The project is designed for one year and impacts different groups of students in progressive stages:",
+    "stats": {
+      "initial": "Initial Students",
+      "selected": "Selected Students",
+      "duration": "Total Project Duration"
+    }
+  },
+  "metodologia": {
+    "title": "Our Methodology: Learning by Doing",
+    "description": "Our philosophy is based on Project-Based Learning (PBL) and the \"Hands On\" concept. The Space Challenge is structured in a 5-step pedagogical path:",
+    "steps": {
+      "conceituar": {
+        "title": "Conceptualize",
+        "description": "Students define the scope and objectives of the mission. They answer: \"What problem will my mission solve?\"."
+      },
+      "projetar": {
+        "title": "Design",
+        "description": "Teams detail what the space mission will be like and what resources will be needed."
+      },
+      "construir": {
+        "title": "Build",
+        "description": "Students explore the satellite development kit (SMT) and bring the mission to life."
+      },
+      "lancar": {
+        "title": "Launch",
+        "description": "Selected students build the orbital satellite, perform tests and prepare it for launch."
+      },
+      "aplicar": {
+        "title": "Apply",
+        "description": "With the satellite in orbit, students use its data to solve the problem identified in the mission conception."
+      }
+    },
+    "hardSkills": {
+      "title": "Hard Skills",
+      "items": [
+        "Scientific Methodology",
+        "Programming and Robotics",
+        "Data Analysis",
+        "Project Management"
+      ]
+    },
+    "softSkills": {
+      "title": "Soft Skills",
+      "items": [
+        "Creativity",
+        "Communication",
+        "Decision Making",
+        "Teamwork"
+      ]
+    }
+  },
+  "fases": {
+    "title": "A 12-Month Journey",
+    "preDesafio": {
+      "title": "Pre-Challenge",
+      "months": "Months 1-4",
+      "description": "Project organization, rule definition, school selection and teacher training."
+    },
+    "fase1": {
+      "title": "Phase 1: Conception",
+      "months": "Months 4-7",
+      "description": "Course begins for the 500 students. Focus on problem analysis and space mission conception (MCR)."
+    },
+    "fase2": {
+      "title": "Phase 2: Design",
+      "months": "Months 7-10",
+      "description": "Students receive SMT Kits. Final project presentation (PDR) and selection of the best teams."
+    },
+    "fase3": {
+      "title": "Phase 3: Construction",
+      "months": "Months 10-15",
+      "description": "The 30 selected students build the PocketQube satellite. Testing, delivery and insertion into orbit."
+    },
+    "posDesafio": {
+      "title": "Post-Challenge",
+      "months": "Months 15-18",
+      "description": "With the satellite in orbit, Ideia Space collects the data and shares it with the institutions."
+    }
+  },
+  "satelite": {
+    "title": "Real Technology for Real Learning",
+    "kit": {
+      "title": "1. Satellite Kit (Training - SMT)",
+      "description": "Distributed to students in Phase 2 for mission prototyping. Includes real subsystems:",
+      "items": [
+        "O.B.D.H. (On-Board Computer)",
+        "T.T&C (Communication)",
+        "ADCS (Attitude Control System)",
+        "EPS (Power System)",
+        "Payload",
+        "Sensors (Humidity, Temperature, Pressure, etc.)"
+      ]
+    },
+    "orbital": {
+      "title": "2. The Orbital Satellite (PocketQube)",
+      "description": "Built by the 30 finalists and launched into space. Specifications:",
+      "specs": {
+        "model": "Model:",
+        "modelValue": "PocketQube 1P",
+        "dimensions": "Dimensions:",
+        "dimensionsValue": "50x58x64 mm",
+        "mass": "Mass:",
+        "massValue": "193 g",
+        "orbit": "Orbit:",
+        "orbitValue": "LEO (Low Earth Orbit)",
+        "launch": "Launch:",
+        "launchValue": "Partnership with Falcon 9, PSLV, H3."
+      }
+    },
+    "imageCaption": {
+      "title": "PocketQube Satellite",
+      "description": "Orbital model built by students"
+    }
+  },
+  "entregaveis": {
+    "title": "Complete Learning Ecosystem",
+    "items": [
+      "16 hours of Training for Mentors and Teachers",
+      "40 Lesson Plans and Teacher Guides",
+      "550 accesses to the Content Platform",
+      "110 Training Satellite Kits (SMT)",
+      "1 Orbital Satellite Construction Kit (PocketQube)",
+      "1 Launch of a PocketQube satellite",
+      "40 hours of online support for Teachers"
+    ]
+  },
+  "impacto": {
+    "title": "Our Proven Impact",
+    "stats": {
+      "students": "Trained Students",
+      "satellites": "Satellites Developed",
+      "teachers": "Qualified Teachers",
+      "countries": "Countries Impacted"
+    },
+    "testimonials": {
+      "title": "What our students say",
+      "mariana": {
+        "name": "Mariana Taveira",
+        "subtitle": "Admitted to Caltech",
+        "quote": "I participated in the satellite course for high school students... With the help of engineers, we designed our space mission, aiming to solve real problems with nanosatellites."
+      },
+      "roseno": {
+        "name": "Roseno Gonçalves",
+        "subtitle": "Admitted to UFRJ",
+        "quote": "I had the opportunity to participate in an Ideia Space course... We managed to work with Arduino and ESP as prototyping platforms for sensors... It was very fun and enlightening."
+      }
+    }
+  },
+  "sobre": {
+    "title": "Meet Ideia Space Leadership",
+    "description": "We are a dedicated partner in training the future workforce for the space sector. Founded in 2022 by specialists with experience at the Brazilian Space Agency and +25 years of combined experience.",
+    "team": {
+      "leo": {
+        "name": "Leonardo Souza",
+        "role": "CEO"
+      },
+      "six": {
+        "name": "Matheus Six",
+        "role": "CPO (Product)"
+      },
+      "rafa": {
+        "name": "Rafael Lôbo",
+        "role": "CTO (Technology)"
+      },
+      "vitor": {
+        "name": "Victor Baptista",
+        "role": "COO (Operations)"
+      }
+    }
+  },
+  "footer": {
+    "title": "Let's revolutionize education with this Idea?",
+    "cta": "Contact us via WhatsApp",
+    "whatsappLink": "Chat on WhatsApp",
+    "company": "Ideia Space Educacao Espacial LTDA - CNPJ: 45.343.061/0001-90"
+  }
+}

@@ -9,6 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="assets/style.css" rel="stylesheet">
+    
+    <!-- i18next -->
+    <script src="https://cdn.jsdelivr.net/npm/i18next@23.7.6/i18next.min.js"></script>
 
     <style>
         :root {
@@ -99,6 +102,83 @@
         .count-animation {
             animation: countUp 1s ease-out;
         }
+        
+        /* Seletor de idiomas */
+        .lang-selector {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .lang-toggle {
+            padding: 0.5rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .lang-toggle:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+        
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 0.5rem;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            min-width: 150px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .lang-selector.active .lang-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .lang-btn {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: none;
+            background: transparent;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-align: left;
+        }
+        
+        .lang-btn:hover {
+            background: #f3f4f6;
+            color: var(--color-primary);
+        }
+        
+        .lang-btn.active {
+            color: var(--color-primary);
+            background: #fce7f3;
+        }
+        
+        .lang-flag {
+            font-size: 1.25rem;
+        }
     </style>
 </head>
 <body class="text-gray-700">
@@ -116,12 +196,38 @@
             </button>
 
             <nav id="nav-menu" class="w-full md:w-auto hidden md:flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 mt-4 md:mt-0">
-                <a href="#desafio" class="font-semibold text-gray-600 hover:text-primary transition-colors">O Desafio</a>
-                <a href="#metodologia" class="font-semibold text-gray-600 hover:text-primary transition-colors">Metodologia</a>
-                <a href="#satelite" class="font-semibold text-gray-600 hover:text-primary transition-colors">O Satélite</a>
-                <a href="#impacto" class="font-semibold text-gray-600 hover:text-primary transition-colors">Impacto</a>
-                <a href="#sobre" class="font-semibold text-gray-600 hover:text-primary transition-colors">Sobre Nós</a>
-                <a href="#footer" class="w-full md:w-auto text-center px-5 py-2 bg-primary text-white font-semibold rounded-lg shadow-md hover:opacity-90 hover-glow transition-all">
+                <a href="#desafio" class="font-semibold text-gray-600 hover:text-primary transition-colors" data-i18n="header.nav.desafio">O Desafio</a>
+                <a href="#metodologia" class="font-semibold text-gray-600 hover:text-primary transition-colors" data-i18n="header.nav.metodologia">Metodologia</a>
+                <a href="#satelite" class="font-semibold text-gray-600 hover:text-primary transition-colors" data-i18n="header.nav.satelite">O Satélite</a>
+                <a href="#impacto" class="font-semibold text-gray-600 hover:text-primary transition-colors" data-i18n="header.nav.impacto">Impacto</a>
+                <a href="#sobre" class="font-semibold text-gray-600 hover:text-primary transition-colors" data-i18n="header.nav.sobre">Sobre Nós</a>
+                
+                <!-- Seletor de Idiomas -->
+                <div class="lang-selector">
+                    <button class="lang-toggle" onclick="toggleLangDropdown()">
+                        <span class="lang-flag" id="current-flag">🇧🇷</span>
+                        <span id="current-lang">PT</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="lang-dropdown">
+                        <button class="lang-btn active" data-lang="pt-BR" onclick="changeLanguage('pt-BR')">
+                            <span class="lang-flag">🇧🇷</span>
+                            <span>Português</span>
+                        </button>
+                        <button class="lang-btn" data-lang="en" onclick="changeLanguage('en')">
+                            <span class="lang-flag">🇺🇸</span>
+                            <span>English</span>
+                        </button>
+                        <button class="lang-btn" data-lang="es" onclick="changeLanguage('es')">
+                            <span class="lang-flag">🇪🇸</span>
+                            <span>Español</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <a href="#footer" class="w-full md:w-auto text-center px-5 py-2 bg-primary text-white font-semibold rounded-lg shadow-md hover:opacity-90 hover-glow transition-all" data-i18n="header.nav.cta">
                     Leve para sua instituição
                 </a>
             </nav>
@@ -132,15 +238,15 @@
 
         <section id="hero" class="bg-dark text-white py-32 md:py-48">
             <div class="container mx-auto px-5 text-center">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6">O Desafio Espacial: Da Sala de Aula à Órbita</h1>
-                <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-gray-300">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6" data-i18n="hero.title">O Desafio Espacial: Da Sala de Aula à Órbita</h1>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-gray-300" data-i18n="hero.description">
                     O Desafio Espacial é um projeto da Ideia Space que conecta o universo à sala de aula. Transformamos alunos em protagonistas, levando-os desde a concepção de uma missão até o lançamento de um satélite real.
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="#desafio" class="px-6 py-3 bg-primary text-white font-semibold rounded-lg shadow-lg hover:opacity-90 hover-glow transition-all">
+                    <a href="#desafio" class="px-6 py-3 bg-primary text-white font-semibold rounded-lg shadow-lg hover:opacity-90 hover-glow transition-all" data-i18n="hero.btnPrimary">
                         Saiba Mais
                     </a>
-                    <a href="#impacto" class="px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-dark transition-colors">
+                    <a href="#impacto" class="px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-dark transition-colors" data-i18n="hero.btnSecondary">
                         Veja nosso impacto
                     </a>
                 </div>
@@ -149,11 +255,11 @@
 
         <section id="problema" class="py-20">
             <div class="container mx-auto px-5 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-6">Por que um Desafio Espacial?</h2>
-                <p class="text-lg max-w-4xl mx-auto mb-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-6" data-i18n="problema.title">Por que um Desafio Espacial?</h2>
+                <p class="text-lg max-w-4xl mx-auto mb-4" data-i18n="problema.text1">
                     A educação brasileira apresenta baixo desempenho em áreas de STEM (Ciência, Tecnologia, Engenharia e Matemática). Ao mesmo tempo, o setor espacial está em expansão e enfrenta uma ausência de profissionais qualificados.
                 </p>
-                <p class="text-lg max-w-4xl mx-auto">
+                <p class="text-lg max-w-4xl mx-auto" data-i18n="problema.text2">
                     Acreditamos que o fascínio pelo espaço pode ser a fagulha para uma experiência de aprendizado engajadora. Usamos a missão espacial como uma ferramenta para capacitar estudantes para a economia do futuro.
                 </p>
             </div>
@@ -161,23 +267,23 @@
 
         <section id="desafio" class="py-20 bg-gray-50">
             <div class="container mx-auto px-5">
-                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-6 text-center">O que é o Desafio Espacial?</h2>
-                <p class="text-lg text-center max-w-4xl mx-auto mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-6 text-center" data-i18n="desafio.title">O que é o Desafio Espacial?</h2>
+                <p class="text-lg text-center max-w-4xl mx-auto mb-12" data-i18n="desafio.description">
                     Trata-se de uma competição de projetos de Missão Espacial voltada para alunos do Ensino Médio (14 a 18 anos). O projeto é desenhado para um ano e impacta diferentes grupos de alunos em etapas progressivas:
                 </p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="bg-white p-8 rounded-lg shadow-lg text-center hover-scale">
                         <h3 class="text-5xl font-bold text-primary mb-3 count-animation">500</h3>
-                        <p class="text-xl font-semibold text-dark">Alunos Iniciais</p>
+                        <p class="text-xl font-semibold text-dark" data-i18n="desafio.stats.initial">Alunos Iniciais</p>
                     </div>
                     <div class="bg-white p-8 rounded-lg shadow-lg text-center hover-scale">
                         <h3 class="text-5xl font-bold text-primary mb-3 count-animation">30</h3>
-                        <p class="text-xl font-semibold text-dark">Alunos Selecionados</p>
+                        <p class="text-xl font-semibold text-dark" data-i18n="desafio.stats.selected">Alunos Selecionados</p>
                     </div>
                     <div class="bg-white p-8 rounded-lg shadow-lg text-center hover-scale">
                         <h3 class="text-5xl font-bold text-primary mb-3 count-animation">1 Ano</h3>
-                        <p class="text-xl font-semibold text-dark">Duração Total do Projeto</p>
+                        <p class="text-xl font-semibold text-dark" data-i18n="desafio.stats.duration">Duração Total do Projeto</p>
                     </div>
                 </div>
             </div>
@@ -185,8 +291,8 @@
 
         <section id="metodologia" class="py-20">
             <div class="container mx-auto px-5">
-                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-6 text-center">Nossa Metodologia: Aprendendo na Prática</h2>
-                <p class="text-lg text-center max-w-4xl mx-auto mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-6 text-center" data-i18n="metodologia.title">Nossa Metodologia: Aprendendo na Prática</h2>
+                <p class="text-lg text-center max-w-4xl mx-auto mb-12" data-i18n="metodologia.description">
                     Nossa filosofia é fundamentada na Aprendizagem Baseada em Projetos (ABP) e no conceito "Hands On". O Desafio Espacial é estruturado em um caminho pedagógico de 5 passos:
                 </p>
 
@@ -195,36 +301,36 @@
                         <li class="mb-10 ml-6">
                             <span class="absolute flex items-center justify-center w-8 h-8 bg-primary rounded-full -left-4 text-white font-bold hover-glow">1</span>
                             <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-primary hover-scale">
-                                <h4 class="text-xl font-bold text-dark mb-1">Conceituar</h4>
-                                <p>Os alunos definem o escopo e os objetivos da missão. Eles respondem: "Qual problema minha missão irá resolver?".</p>
+                                <h4 class="text-xl font-bold text-dark mb-1" data-i18n="metodologia.steps.conceituar.title">Conceituar</h4>
+                                <p data-i18n="metodologia.steps.conceituar.description">Os alunos definem o escopo e os objetivos da missão. Eles respondem: "Qual problema minha missão irá resolver?".</p>
                             </div>
                         </li>
                         <li class="mb-10 ml-6">
                             <span class="absolute flex items-center justify-center w-8 h-8 bg-primary rounded-full -left-4 text-white font-bold hover-glow">2</span>
                             <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-primary hover-scale">
-                                <h4 class="text-xl font-bold text-dark mb-1">Projetar</h4>
-                                <p>As equipes detalham como será a missão espacial e quais recursos serão necessários.</p>
+                                <h4 class="text-xl font-bold text-dark mb-1" data-i18n="metodologia.steps.projetar.title">Projetar</h4>
+                                <p data-i18n="metodologia.steps.projetar.description">As equipes detalham como será a missão espacial e quais recursos serão necessários.</p>
                             </div>
                         </li>
                         <li class="mb-10 ml-6">
                             <span class="absolute flex items-center justify-center w-8 h-8 bg-primary rounded-full -left-4 text-white font-bold hover-glow">3</span>
                             <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-primary hover-scale">
-                                <h4 class="text-xl font-bold text-dark mb-1">Construir</h4>
-                                <p>Os alunos exploram o kit de desenvolvimento de satélites (SMT) e tiram a missão do papel.</p>
+                                <h4 class="text-xl font-bold text-dark mb-1" data-i18n="metodologia.steps.construir.title">Construir</h4>
+                                <p data-i18n="metodologia.steps.construir.description">Os alunos exploram o kit de desenvolvimento de satélites (SMT) e tiram a missão do papel.</p>
                             </div>
                         </li>
                         <li class="mb-10 ml-6">
                             <span class="absolute flex items-center justify-center w-8 h-8 bg-primary rounded-full -left-4 text-white font-bold hover-glow">4</span>
                             <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-primary hover-scale">
-                                <h4 class="text-xl font-bold text-dark mb-1">Lançar</h4>
-                                <p>Os alunos selecionados constroem o satélite orbital, realizam testes e o preparam para o lançamento.</p>
+                                <h4 class="text-xl font-bold text-dark mb-1" data-i18n="metodologia.steps.lancar.title">Lançar</h4>
+                                <p data-i18n="metodologia.steps.lancar.description">Os alunos selecionados constroem o satélite orbital, realizam testes e o preparam para o lançamento.</p>
                             </div>
                         </li>
                         <li class="ml-6">
                             <span class="absolute flex items-center justify-center w-8 h-8 bg-primary rounded-full -left-4 text-white font-bold hover-glow">5</span>
                             <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-primary hover-scale">
-                                <h4 class="text-xl font-bold text-dark mb-1">Aplicar</h4>
-                                <p>Com o satélite em órbita, os alunos utilizam seus dados para resolver o problema apontado na concepção da missão.</p>
+                                <h4 class="text-xl font-bold text-dark mb-1" data-i18n="metodologia.steps.aplicar.title">Aplicar</h4>
+                                <p data-i18n="metodologia.steps.aplicar.description">Com o satélite em órbita, os alunos utilizam seus dados para resolver o problema apontado na concepção da missão.</p>
                             </div>
                         </li>
                     </ol>
@@ -232,8 +338,8 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
                     <div class="bg-white p-8 rounded-lg shadow-lg hover-scale">
-                        <h3 class="text-2xl font-bold text-primary mb-4 border-b pb-2">Hard Skills</h3>
-                        <ul class="list-disc list-inside space-y-2 text-lg">
+                        <h3 class="text-2xl font-bold text-primary mb-4 border-b pb-2" data-i18n="metodologia.hardSkills.title">Hard Skills</h3>
+                        <ul class="list-disc list-inside space-y-2 text-lg" data-skills="hard">
                             <li>Metodologia Científica</li>
                             <li>Programação e Robótica</li>
                             <li>Análise de Dados</li>
@@ -241,8 +347,8 @@
                         </ul>
                     </div>
                     <div class="bg-white p-8 rounded-lg shadow-lg hover-scale">
-                        <h3 class="text-2xl font-bold text-primary mb-4 border-b pb-2">Soft Skills</h3>
-                        <ul class="list-disc list-inside space-y-2 text-lg">
+                        <h3 class="text-2xl font-bold text-primary mb-4 border-b pb-2" data-i18n="metodologia.softSkills.title">Soft Skills</h3>
+                        <ul class="list-disc list-inside space-y-2 text-lg" data-skills="soft">
                             <li>Criatividade</li>
                             <li>Comunicação</li>
                             <li>Tomada de Decisão</li>
@@ -255,62 +361,62 @@
 
         <section id="fases" class="py-20 bg-gray-50">
             <div class="container mx-auto px-5">
-                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-12 text-center">Uma Jornada de 12 Meses</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-12 text-center" data-i18n="fases.title">Uma Jornada de 12 Meses</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-dark hover-scale">
-                        <h3 class="text-2xl font-bold text-primary mb-3">Pré-Desafio</h3>
-                        <span class="block font-bold text-dark mb-2">Meses 1-4</span>
-                        <p>Organização do projeto, definição de regras, seleção de escolas e formação de professores.</p>
+                        <h3 class="text-2xl font-bold text-primary mb-3" data-i18n="fases.preDesafio.title">Pré-Desafio</h3>
+                        <span class="block font-bold text-dark mb-2" data-i18n="fases.preDesafio.months">Meses 1-4</span>
+                        <p data-i18n="fases.preDesafio.description">Organização do projeto, definição de regras, seleção de escolas e formação de professores.</p>
                     </div>
                     <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-dark hover-scale">
-                        <h3 class="text-2xl font-bold text-primary mb-3">Fase 1: Concepção</h3>
-                        <span class="block font-bold text-dark mb-2">Meses 4-7</span>
-                        <p>Início do curso para os 500 alunos. Foco na análise de problemas e concepção da missão espacial (MCR).</p>
+                        <h3 class="text-2xl font-bold text-primary mb-3" data-i18n="fases.fase1.title">Fase 1: Concepção</h3>
+                        <span class="block font-bold text-dark mb-2" data-i18n="fases.fase1.months">Meses 4-7</span>
+                        <p data-i18n="fases.fase1.description">Início do curso para os 500 alunos. Foco na análise de problemas e concepção da missão espacial (MCR).</p>
                     </div>
                     <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-dark hover-scale">
-                        <h3 class="text-2xl font-bold text-primary mb-3">Fase 2: Projeto</h3>
-                        <span class="block font-bold text-dark mb-2">Meses 7-10</span>
-                        <p>Alunos recebem os Kits SMT. Apresentação final dos projetos (PDR) e seleção das melhores equipes.</p>
+                        <h3 class="text-2xl font-bold text-primary mb-3" data-i18n="fases.fase2.title">Fase 2: Projeto</h3>
+                        <span class="block font-bold text-dark mb-2" data-i18n="fases.fase2.months">Meses 7-10</span>
+                        <p data-i18n="fases.fase2.description">Alunos recebem os Kits SMT. Apresentação final dos projetos (PDR) e seleção das melhores equipes.</p>
                     </div>
                     <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-dark hover-scale">
-                        <h3 class="text-2xl font-bold text-primary mb-3">Fase 3: Construção</h3>
-                        <span class="block font-bold text-dark mb-2">Meses 10-15</span>
-                        <p>Os 30 alunos selecionados constroem o satélite PocketQube. Testes, entrega e inserção em órbita.</p>
+                        <h3 class="text-2xl font-bold text-primary mb-3" data-i18n="fases.fase3.title">Fase 3: Construção</h3>
+                        <span class="block font-bold text-dark mb-2" data-i18n="fases.fase3.months">Meses 10-15</span>
+                        <p data-i18n="fases.fase3.description">Os 30 alunos selecionados constroem o satélite PocketQube. Testes, entrega e inserção em órbita.</p>
                     </div>
                     <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-dark hover-scale">
-                        <h3 class="text-2xl font-bold text-primary mb-3">Pós-Desafio</h3>
-                        <span class="block font-bold text-dark mb-2">Meses 15-18</span>
-                        <p>Com o satélite em órbita, o Ideia Space coleta os dados e os compartilha com as instituições.</p>
+                        <h3 class="text-2xl font-bold text-primary mb-3" data-i18n="fases.posDesafio.title">Pós-Desafio</h3>
+                        <span class="block font-bold text-dark mb-2" data-i18n="fases.posDesafio.months">Meses 15-18</span>
+                        <p data-i18n="fases.posDesafio.description">Com o satélite em órbita, o Ideia Space coleta os dados e os compartilha com as instituições.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="satelite" class="py-20">
+                <section id="satelite" class="py-20">
             <div class="container mx-auto px-5">
-                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-12 text-center">Tecnologia Real para Aprendizado Real</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-12 text-center" data-i18n="satelite.title">Tecnologia Real para Aprendizado Real</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="bg-white p-8 rounded-lg shadow-lg hover-scale">
-                        <h3 class="text-2xl font-bold text-primary mb-4">1. Kit de Satélite (Treinamento - SMT)</h3>
-                        <p class="mb-4">Distribuído aos alunos na Fase 2 para prototipagem da missão. Inclui subsistemas reais:</p>
-                        <ul class="list-disc list-inside space-y-2">
+                        <h3 class="text-2xl font-bold text-primary mb-4" data-i18n="satelite.kit.title">1. Kit de Satélite (Treinamento - SMT)</h3>
+                        <p class="mb-4" data-i18n="satelite.kit.description">Distribuído aos alunos na Fase 2 para prototipagem da missão. Inclui subsistemas reais:</p>
+                        <ul class="list-disc list-inside space-y-2" data-list="kit">
                             <li>O.B.D.H. (Computador de Bordo)</li>
                             <li>T.T&C (Comunicação)</li>
                             <li>ADCS (Sistema de Orientação)</li>
                             <li>EPS (Sistema de Energia)</li>
-                            <li>Payload (Carga Útil)</li>
+                            <li>Payload (Carga Útiil)</li>
                             <li>Sensores (Umidade, Temperatura, Pressão, etc.)</li>
                         </ul>
                     </div>
                     <div class="bg-white p-8 rounded-lg shadow-lg hover-scale">
-                        <h3 class="text-2xl font-bold text-primary mb-4">2. O Satélite Orbital (PocketQube)</h3>
-                        <p class="mb-4">Construído pelos 30 finalistas e lançado ao espaço. Especificações:</p>
+                        <h3 class="text-2xl font-bold text-primary mb-4" data-i18n="satelite.orbital.title">2. O Satélite Orbital (PocketQube)</h3>
+                        <p class="mb-4" data-i18n="satelite.orbital.description">Construído pelos 30 finalistas e lançado ao espaço. Especificações:</p>
                         <ul class="list-disc list-inside space-y-2">
-                            <li><b>Modelo:</b> PocketQube 1P</li>
-                            <li><b>Dimensões:</b> 50x58x64 mm</li>
-                            <li><b>Massa:</b> 193 g</li>
-                            <li><b>Órbita:</b> LEO (Órbita Baixa)</li>
-                            <li><b>Lançamento:</b> Parceria com Falcon 9, PSLV, H3.</li>
+                            <li><b data-i18n="satelite.orbital.specs.model">Modelo:</b> <span data-i18n="satelite.orbital.specs.modelValue">PocketQube 1P</span></li>
+                            <li><b data-i18n="satelite.orbital.specs.dimensions">Dimensões:</b> <span data-i18n="satelite.orbital.specs.dimensionsValue">50x58x64 mm</span></li>
+                            <li><b data-i18n="satelite.orbital.specs.mass">Massa:</b> <span data-i18n="satelite.orbital.specs.massValue">193 g</span></li>
+                            <li><b data-i18n="satelite.orbital.specs.orbit">Órbita:</b> <span data-i18n="satelite.orbital.specs.orbitValue">LEO (Órbita Baixa)</span></li>
+                            <li><b data-i18n="satelite.orbital.specs.launch">Lançamento:</b> <span data-i18n="satelite.orbital.specs.launchValue">Parceria com Falcon 9, PSLV, H3.</span></li>
                         </ul>
                     </div>
                 </div>
@@ -319,8 +425,8 @@
                     <div class="image-container">
                         <img src="assets/StelitePocketQube.png" alt="Satélite PocketQube" class="w-full">
                         <div class="image-overlay">
-                            <h3 class="text-xl font-bold">Satélite PocketQube</h3>
-                            <p>Modelo orbital construído pelos estudantes</p>
+                            <h3 class="text-xl font-bold" data-i18n="satelite.imageCaption.title">Satélite PocketQube</h3>
+                            <p data-i18n="satelite.imageCaption.description">Modelo orbital construído pelos estudantes</p>
                         </div>
                     </div>
                 </div>
@@ -329,8 +435,8 @@
 
         <section id="entregaveis" class="py-20 bg-gray-50">
             <div class="container mx-auto px-5">
-                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-12 text-center">Ecossistema de Aprendizagem Completo</h2>
-                <ul class="checklist max-w-2xl mx-auto bg-white p-10 rounded-lg shadow-lg space-y-4 hover-scale">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-12 text-center" data-i18n="entregaveis.title">Ecossistema de Aprendizagem Completo</h2>
+                <ul class="checklist max-w-2xl mx-auto bg-white p-10 rounded-lg shadow-lg space-y-4 hover-scale" data-list="entregaveis">
                     <li class="relative pl-8 text-lg">16 horas de Treinamento para Mentores e Professores</li>
                     <li class="relative pl-8 text-lg">40 Planos de Aula e Guias do Professor</li>
                     <li class="relative pl-8 text-lg">550 acessos à Plataforma de Conteúdos</li>
@@ -344,27 +450,27 @@
 
         <section id="impacto" class="py-20">
             <div class="container mx-auto px-5">
-                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-12 text-center">Nosso Impacto Comprovado</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-12 text-center" data-i18n="impacto.title">Nosso Impacto Comprovado</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
                     <div class="bg-white p-6 rounded-lg shadow-lg text-center hover-scale">
                         <h3 class="text-4xl font-bold text-primary mb-2 count-animation">+1.000</h3>
-                        <p class="text-lg font-semibold text-dark">Alunos Capacitados</p>
+                        <p class="text-lg font-semibold text-dark" data-i18n="impacto.stats.students">Alunos Capacitados</p>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-lg text-center hover-scale">
                         <h3 class="text-4xl font-bold text-primary mb-2 count-animation">8</h3>
-                        <p class="text-lg font-semibold text-dark">Satélites Desenvolvidos</p>
+                        <p class="text-lg font-semibold text-dark" data-i18n="impacto.stats.satellites">Satélites Desenvolvidos</p>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-lg text-center hover-scale">
                         <h3 class="text-4xl font-bold text-primary mb-2 count-animation">+140</h3>
-                        <p class="text-lg font-semibold text-dark">Professores Habilitados</p>
+                        <p class="text-lg font-semibold text-dark" data-i18n="impacto.stats.teachers">Professores Habilitados</p>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-lg text-center hover-scale">
                         <h3 class="text-4xl font-bold text-primary mb-2 count-animation">5+</h3>
-                        <p class="text-lg font-semibold text-dark">Países Impactados</p>
+                        <p class="text-lg font-semibold text-dark" data-i18n="impacto.stats.countries">Países Impactados</p>
                     </div>
                 </div>
 
-                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-12 text-center">O que dizem nossos alunos</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-12 text-center" data-i18n="impacto.testimonials.title">O que dizem nossos alunos</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="bg-white p-8 rounded-lg shadow-lg hover-scale">
                         <div class="flex items-center mb-4">
@@ -372,11 +478,11 @@
                                 <img src="assets/Mariana.png" alt="Mariana Taveira" class="w-full h-full object-cover">
                             </div>
                             <div>
-                                <cite class="font-bold text-dark not-italic">Mariana Taveira</cite>
-                                <span class="block text-gray-600">Aprovada na Caltech</span>
+                                <cite class="font-bold text-dark not-italic" data-i18n="impacto.testimonials.mariana.name">Mariana Taveira</cite>
+                                <span class="block text-gray-600" data-i18n="impacto.testimonials.mariana.subtitle">Aprovada na Caltech</span>
                             </div>
                         </div>
-                        <blockquote class="text-lg italic border-l-4 border-primary pl-6 mb-4">
+                        <blockquote class="text-lg italic border-l-4 border-primary pl-6 mb-4" data-i18n="impacto.testimonials.mariana.quote">
                             "Participei do curso de satélites para alunos do Ensino Médio... Com a ajuda de engenheiros, projetamos nossa missão espacial, objetivando resolver problemas reais com nanossatélites."
                         </blockquote>
                     </div>
@@ -386,11 +492,11 @@
                                 <img src="assets/Roseno.png" alt="Roseno Gonçalves" class="w-full h-full object-cover">
                             </div>
                             <div>
-                                <cite class="font-bold text-dark not-italic">Roseno Gonçalves</cite>
-                                <span class="block text-gray-600">Aprovado na UFRJ</span>
+                                <cite class="font-bold text-dark not-italic" data-i18n="impacto.testimonials.roseno.name">Roseno Gonçalves</cite>
+                                <span class="block text-gray-600" data-i18n="impacto.testimonials.roseno.subtitle">Aprovado na UFRJ</span>
                             </div>
                         </div>
-                        <blockquote class="text-lg italic border-l-4 border-primary pl-6 mb-4">
+                        <blockquote class="text-lg italic border-l-4 border-primary pl-6 mb-4" data-i18n="impacto.testimonials.roseno.quote">
                             "Tive a oportunidade de participar de um curso do Ideia Space... Conseguimos trabalhar com Arduino e ESP como plataformas de prototipagem para sensores... Foi muito divertido e esclarecedor."
                         </blockquote>
                     </div>
@@ -400,8 +506,8 @@
 
         <section id="sobre" class="py-20 bg-gray-50">
             <div class="container mx-auto px-5">
-                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-6 text-center">Conheça a Liderança da Ideia Space</h2>
-                <p class="text-lg text-center max-w-4xl mx-auto mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-dark mb-6 text-center" data-i18n="sobre.title">Conheça a Liderança da Ideia Space</h2>
+                <p class="text-lg text-center max-w-4xl mx-auto mb-12" data-i18n="sobre.description">
                     Somos um parceiro dedicado na formação da futura força de trabalho para o setor espacial. Fundada em 2022 por especialistas com experiência na Agência Espacial Brasileira e +25 anos de experiência combinada.
                 </p>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -409,29 +515,29 @@
                         <div class="image-container w-32 h-32 rounded-full overflow-hidden mx-auto mb-4">
                             <img src="assets/Leo.png" alt="Leonardo Souza" class="w-full h-full object-cover">
                         </div>
-                        <h4 class="text-xl font-bold text-dark mb-1">Leonardo Souza</h4>
-                        <span class="text-primary font-semibold">CEO</span>
+                        <h4 class="text-xl font-bold text-dark mb-1" data-i18n="sobre.team.leo.name">Leonardo Souza</h4>
+                        <span class="text-primary font-semibold" data-i18n="sobre.team.leo.role">CEO</span>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-lg text-center hover-scale">
                         <div class="image-container w-32 h-32 rounded-full overflow-hidden mx-auto mb-4">
                             <img src="assets/six.png" alt="Matheus Six" class="w-full h-full object-cover">
                         </div>
-                        <h4 class="text-xl font-bold text-dark mb-1">Matheus Six</h4>
-                        <span class="text-primary font-semibold">CPO (Produto)</span>
+                        <h4 class="text-xl font-bold text-dark mb-1" data-i18n="sobre.team.six.name">Matheus Six</h4>
+                        <span class="text-primary font-semibold" data-i18n="sobre.team.six.role">CPO (Produto)</span>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-lg text-center hover-scale">
                         <div class="image-container w-32 h-32 rounded-full overflow-hidden mx-auto mb-4">
                             <img src="assets/rafa.png" alt="Rafael Lôbo" class="w-full h-full object-cover">
                         </div>
-                        <h4 class="text-xl font-bold text-dark mb-1">Rafael Lôbo</h4>
-                        <span class="text-primary font-semibold">CTO (Tecnologia)</span>
+                        <h4 class="text-xl font-bold text-dark mb-1" data-i18n="sobre.team.rafa.name">Rafael Lôbo</h4>
+                        <span class="text-primary font-semibold" data-i18n="sobre.team.rafa.role">CTO (Tecnologia)</span>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-lg text-center hover-scale">
                         <div class="image-container w-32 h-32 rounded-full overflow-hidden mx-auto mb-4">
                             <img src="assets/vitor.png" alt="Victor Baptista" class="w-full h-full object-cover">
                         </div>
-                        <h4 class="text-xl font-bold text-dark mb-1">Victor Baptista</h4>
-                        <span class="text-primary font-semibold">COO (Operações)</span>
+                        <h4 class="text-xl font-bold text-dark mb-1" data-i18n="sobre.team.vitor.name">Victor Baptista</h4>
+                        <span class="text-primary font-semibold" data-i18n="sobre.team.vitor.role">COO (Operações)</span>
                     </div>
                 </div>
             </div>
@@ -444,11 +550,12 @@
         <a href="#hero" class="flex justify-center mb-4">
             <img src="assets/LogoIDEIA.png" alt="Ideia Space" class="h-10 md:h-12">
         </a>
-        <h2 class="text-3xl font-bold mb-8">Vamos revolucionar a educação com essa Ideia?</h2>
+        <h2 class="text-3xl font-bold mb-8" data-i18n="footer.title">Vamos revolucionar a educação com essa Ideia?</h2>
         
         <a href="https://wa.me/5561991983152?text=Olá,%20vim%20do%20seu%20site!" 
            target="_blank" 
-           class="px-8 py-3 bg-primary text-white text-lg font-semibold rounded-lg shadow-lg hover:opacity-90 hover-glow transition-all inline-block mb-4">
+           class="px-8 py-3 bg-primary text-white text-lg font-semibold rounded-lg shadow-lg hover:opacity-90 hover-glow transition-all inline-block mb-4"
+           data-i18n="footer.cta">
             Entre em contato via WhatsApp
         </a>
 
@@ -456,12 +563,13 @@
             <a href="tel:+5561991983152" class="block mb-2 hover:text-primary transition-colors">+55 (61) 99198 3152</a>
             <a href="https://wa.me/5561991983152?text=Olá,%20vim%20do%20seu%20site!" 
                target="_blank" 
-               class="hover:text-primary transition-colors">
+               class="hover:text-primary transition-colors"
+               data-i18n="footer.whatsappLink">
                 Fale no WhatsApp
             </a>
         </div>
         
-        <p class="text-gray-400 text-sm mt-8">
+        <p class="text-gray-400 text-sm mt-8" data-i18n="footer.company">
             Ideia Space Educacao Espacial LTDA - CNPJ: 45.343.061/0001-90
         </p>
     </div>
@@ -470,6 +578,19 @@
     <script>
         document.getElementById('menu-btn').addEventListener('click', function() {
             document.getElementById('nav-menu').classList.toggle('hidden');
+        });
+        
+        // Toggle dropdown de idiomas
+        function toggleLangDropdown() {
+            document.querySelector('.lang-selector').classList.toggle('active');
+        }
+        
+        // Fechar dropdown ao clicar fora
+        document.addEventListener('click', function(event) {
+            const langSelector = document.querySelector('.lang-selector');
+            if (langSelector && !langSelector.contains(event.target)) {
+                langSelector.classList.remove('active');
+            }
         });
         
         // Adiciona animação aos números quando eles entram na viewport
@@ -490,6 +611,9 @@
             observer.observe(el);
         });
     </script>
+    
+    <!-- i18n Script -->
+    <script src="assets/i18n.js"></script>
 
 </body>
 </html>

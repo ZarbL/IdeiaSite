@@ -1,0 +1,201 @@
+{
+  "header": {
+    "nav": {
+      "desafio": "El Desafío",
+      "metodologia": "Metodología",
+      "satelite": "El Satélite",
+      "impacto": "Impacto",
+      "sobre": "Sobre Nosotros",
+      "cta": "Llévalo a tu institución"
+    }
+  },
+  "hero": {
+    "title": "El Desafío Espacial: Del Aula a la Órbita",
+    "description": "El Desafío Espacial es un proyecto de Ideia Space que conecta el universo con el aula. Transformamos a los estudiantes en protagonistas, llevándolos desde la concepción de una misión hasta el lanzamiento de un satélite real.",
+    "btnPrimary": "Saber Más",
+    "btnSecondary": "Ver nuestro impacto"
+  },
+  "problema": {
+    "title": "¿Por qué un Desafío Espacial?",
+    "text1": "La educación brasileña presenta bajo rendimiento en áreas STEM (Ciencia, Tecnología, Ingeniería y Matemáticas). Al mismo tiempo, el sector espacial está en expansión y enfrenta una escasez de profesionales calificados.",
+    "text2": "Creemos que la fascinación por el espacio puede ser la chispa para una experiencia de aprendizaje atractiva. Usamos la misión espacial como una herramienta para capacitar a los estudiantes para la economía del futuro."
+  },
+  "desafio": {
+    "title": "¿Qué es el Desafío Espacial?",
+    "description": "Se trata de una competición de proyectos de Misión Espacial dirigida a estudiantes de secundaria (14 a 18 años). El proyecto está diseñado para un año e impacta a diferentes grupos de estudiantes en etapas progresivas:",
+    "stats": {
+      "initial": "Estudiantes Iniciales",
+      "selected": "Estudiantes Seleccionados",
+      "duration": "Duración Total del Proyecto"
+    }
+  },
+  "metodologia": {
+    "title": "Nuestra Metodología: Aprendiendo en la Práctica",
+    "description": "Nuestra filosofía se basa en el Aprendizaje Basado en Proyectos (ABP) y el concepto \"Hands On\". El Desafío Espacial está estructurado en un camino pedagógico de 5 pasos:",
+    "steps": {
+      "conceituar": {
+        "title": "Conceptualizar",
+        "description": "Los estudiantes definen el alcance y los objetivos de la misión. Responden: \"¿Qué problema resolverá mi misión?\"."
+      },
+      "projetar": {
+        "title": "Diseñar",
+        "description": "Los equipos detallan cómo será la misión espacial y qué recursos serán necesarios."
+      },
+      "construir": {
+        "title": "Construir",
+        "description": "Los estudiantes exploran el kit de desarrollo de satélites (SMT) y dan vida a la misión."
+      },
+      "lancar": {
+        "title": "Lanzar",
+        "description": "Los estudiantes seleccionados construyen el satélite orbital, realizan pruebas y lo preparan para el lanzamiento."
+      },
+      "aplicar": {
+        "title": "Aplicar",
+        "description": "Con el satélite en órbita, los estudiantes utilizan sus datos para resolver el problema identificado en la concepción de la misión."
+      }
+    },
+    "hardSkills": {
+      "title": "Hard Skills",
+      "items": [
+        "Metodología Científica",
+        "Programación y Robótica",
+        "Análisis de Datos",
+        "Gestión de Proyectos"
+      ]
+    },
+    "softSkills": {
+      "title": "Soft Skills",
+      "items": [
+        "Creatividad",
+        "Comunicación",
+        "Toma de Decisiones",
+        "Trabajo en Equipo"
+      ]
+    }
+  },
+  "fases": {
+    "title": "Un Viaje de 12 Meses",
+    "preDesafio": {
+      "title": "Pre-Desafío",
+      "months": "Meses 1-4",
+      "description": "Organización del proyecto, definición de reglas, selección de escuelas y formación de profesores."
+    },
+    "fase1": {
+      "title": "Fase 1: Concepción",
+      "months": "Meses 4-7",
+      "description": "Inicio del curso para los 500 estudiantes. Enfoque en análisis de problemas y concepción de la misión espacial (MCR)."
+    },
+    "fase2": {
+      "title": "Fase 2: Diseño",
+      "months": "Meses 7-10",
+      "description": "Los estudiantes reciben los Kits SMT. Presentación final de proyectos (PDR) y selección de los mejores equipos."
+    },
+    "fase3": {
+      "title": "Fase 3: Construcción",
+      "months": "Meses 10-15",
+      "description": "Los 30 estudiantes seleccionados construyen el satélite PocketQube. Pruebas, entrega e inserción en órbita."
+    },
+    "posDesafio": {
+      "title": "Post-Desafío",
+      "months": "Meses 15-18",
+      "description": "Con el satélite en órbita, Ideia Space recopila los datos y los comparte con las instituciones."
+    }
+  },
+  "satelite": {
+    "title": "Tecnología Real para Aprendizaje Real",
+    "kit": {
+      "title": "1. Kit de Satélite (Entrenamiento - SMT)",
+      "description": "Distribuido a los estudiantes en la Fase 2 para prototipado de la misión. Incluye subsistemas reales:",
+      "items": [
+        "O.B.D.H. (Computadora de Abordo)",
+        "T.T&C (Comunicación)",
+        "ADCS (Sistema de Control de Actitud)",
+        "EPS (Sistema de Energía)",
+        "Carga Útil",
+        "Sensores (Humedad, Temperatura, Presión, etc.)"
+      ]
+    },
+    "orbital": {
+      "title": "2. El Satélite Orbital (PocketQube)",
+      "description": "Construido por los 30 finalistas y lanzado al espacio. Especificaciones:",
+      "specs": {
+        "model": "Modelo:",
+        "modelValue": "PocketQube 1P",
+        "dimensions": "Dimensiones:",
+        "dimensionsValue": "50x58x64 mm",
+        "mass": "Masa:",
+        "massValue": "193 g",
+        "orbit": "Órbita:",
+        "orbitValue": "LEO (Órbita Baja)",
+        "launch": "Lanzamiento:",
+        "launchValue": "Asociación con Falcon 9, PSLV, H3."
+      }
+    },
+    "imageCaption": {
+      "title": "Satélite PocketQube",
+      "description": "Modelo orbital construido por estudiantes"
+    }
+  },
+  "entregaveis": {
+    "title": "Ecosistema de Aprendizaje Completo",
+    "items": [
+      "16 horas de Capacitación para Mentores y Profesores",
+      "40 Planes de Clase y Guías del Profesor",
+      "550 accesos a la Plataforma de Contenidos",
+      "110 Kits de Satélite de Entrenamiento (SMT)",
+      "1 Kit de Construcción de Satélite Orbital (PocketQube)",
+      "1 Lanzamiento de un satélite PocketQube",
+      "40 horas de soporte en línea para Profesores"
+    ]
+  },
+  "impacto": {
+    "title": "Nuestro Impacto Comprobado",
+    "stats": {
+      "students": "Estudiantes Capacitados",
+      "satellites": "Satélites Desarrollados",
+      "teachers": "Profesores Habilitados",
+      "countries": "Países Impactados"
+    },
+    "testimonials": {
+      "title": "Lo que dicen nuestros estudiantes",
+      "mariana": {
+        "name": "Mariana Taveira",
+        "subtitle": "Admitida en Caltech",
+        "quote": "Participé en el curso de satélites para estudiantes de secundaria... Con la ayuda de ingenieros, diseñamos nuestra misión espacial, con el objetivo de resolver problemas reales con nanosatélites."
+      },
+      "roseno": {
+        "name": "Roseno Gonçalves",
+        "subtitle": "Admitido en UFRJ",
+        "quote": "Tuve la oportunidad de participar en un curso de Ideia Space... Pudimos trabajar con Arduino y ESP como plataformas de prototipado para sensores... Fue muy divertido y esclarecedor."
+      }
+    }
+  },
+  "sobre": {
+    "title": "Conozca el Liderazgo de Ideia Space",
+    "description": "Somos un socio dedicado en la formación de la futura fuerza laboral para el sector espacial. Fundada en 2022 por especialistas con experiencia en la Agencia Espacial Brasileña y +25 años de experiencia combinada.",
+    "team": {
+      "leo": {
+        "name": "Leonardo Souza",
+        "role": "CEO"
+      },
+      "six": {
+        "name": "Matheus Six",
+        "role": "CPO (Producto)"
+      },
+      "rafa": {
+        "name": "Rafael Lôbo",
+        "role": "CTO (Tecnología)"
+      },
+      "vitor": {
+        "name": "Victor Baptista",
+        "role": "COO (Operaciones)"
+      }
+    }
+  },
+  "footer": {
+    "title": "¿Vamos a revolucionar la educación con esta Idea?",
+    "cta": "Contáctenos por WhatsApp",
+    "whatsappLink": "Hablar por WhatsApp",
+    "company": "Ideia Space Educacao Espacial LTDA - CNPJ: 45.343.061/0001-90"
+  }
+}

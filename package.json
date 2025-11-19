@@ -13,5 +13,9 @@
   "devDependencies": {
     "live-server": "^1.2.2",
     "tailwindcss": "^3.4.0"
+  },
+  "dependencies": {
+    "i18next": "^25.6.3",
+    "i18next-browser-languagedetector": "^8.2.0"
   }
 }
