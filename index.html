@@ -205,18 +205,18 @@
                 <!-- Seletor de Idiomas -->
                 <div class="lang-selector">
                     <button class="lang-toggle" onclick="toggleLangDropdown()">
-                        <span class="lang-flag" id="current-flag">🇧🇷</span>
-                        <span id="current-lang">PT</span>
+                        <span class="lang-flag" id="current-flag">🇺🇸</span>
+                        <span id="current-lang">EN</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                         </svg>
                     </button>
                     <div class="lang-dropdown">
-                        <button class="lang-btn active" data-lang="pt-BR" onclick="changeLanguage('pt-BR')">
+                        <button class="lang-btn" data-lang="pt-BR" onclick="changeLanguage('pt-BR')">
                             <span class="lang-flag">🇧🇷</span>
                             <span>Português</span>
                         </button>
-                        <button class="lang-btn" data-lang="en" onclick="changeLanguage('en')">
+                        <button class="lang-btn active" data-lang="en" onclick="changeLanguage('en')">
                             <span class="lang-flag">🇺🇸</span>
                             <span>English</span>
                         </button>
@@ -282,7 +282,7 @@
                         <p class="text-xl font-semibold text-dark" data-i18n="desafio.stats.selected">Alunos Selecionados</p>
                     </div>
                     <div class="bg-white p-8 rounded-lg shadow-lg text-center hover-scale">
-                        <h3 class="text-5xl font-bold text-primary mb-3 count-animation">1 Ano</h3>
+                        <h3 class="text-5xl font-bold text-primary mb-3 count-animation" data-i18n="desafio.stats.durationValue">1 Ano</h3>
                         <p class="text-xl font-semibold text-dark" data-i18n="desafio.stats.duration">Duração Total do Projeto</p>
                     </div>
                 </div>

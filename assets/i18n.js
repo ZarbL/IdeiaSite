@@ -1,7 +1,7 @@
 // Configuração do i18next
 const i18nextConfig = {
-  lng: 'pt-BR', // idioma padrão
-  fallbackLng: 'pt-BR',
+  lng: 'en', // idioma padrão
+  fallbackLng: 'en',
   debug: false,
   resources: {}
 };
@@ -27,7 +27,7 @@ function detectBrowserLanguage() {
   if (browserLang.startsWith('pt')) return 'pt-BR';
   if (browserLang.startsWith('es')) return 'es';
   if (browserLang.startsWith('en')) return 'en';
-  return 'pt-BR';
+  return 'en'; // padrão inglês
 }
 
 // Inicializar i18next

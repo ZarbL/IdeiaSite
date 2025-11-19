@@ -26,7 +26,8 @@
     "stats": {
       "initial": "Alunos Iniciais",
       "selected": "Alunos Selecionados",
-      "duration": "Duração Total do Projeto"
+      "duration": "Duração Total do Projeto",
+      "durationValue": "1 Ano"
     }
   },
   "metodologia": {

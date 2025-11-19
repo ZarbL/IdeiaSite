@@ -26,7 +26,8 @@
     "stats": {
       "initial": "Initial Students",
       "selected": "Selected Students",
-      "duration": "Total Project Duration"
+      "duration": "Total Project Duration",
+      "durationValue": "1 Year"
     }
   },
   "metodologia": {
